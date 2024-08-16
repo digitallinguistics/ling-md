@@ -17,8 +17,14 @@
     "type": "git",
     "url": "https://github.com/digitallinguistics/ling-md.git"
   },
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1"
   }
 }
