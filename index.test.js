@@ -7,7 +7,7 @@ const parser = new Parser
 
 describe(`ling-md`, function() {
 
-  it(`converts regular markdown`, function() {
+  it.only(`converts regular markdown`, function() {
     const md   = `# Hello, [World](#)!`
     const html = parser.parse(md)
     expect(html).to.equal(`<h1>Hello, <a href="#">World</a>!</h1>\n`)
