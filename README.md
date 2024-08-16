@@ -22,5 +22,15 @@ const html     = parser.parse(markdown)
 console.log(html) // <p>The word <i>perro</i> in Spanish means <q>dog</q>.</p>
 ```
 
+## API
+
+### `marked`
+
+Provides access to the `marked` instance for further customization.
+
+### `parse(md)`
+
+Parse a markdown string using the current options and return HTML.
+
 <!-- LINKS -->
 [marked]: https://marked.js.org/
