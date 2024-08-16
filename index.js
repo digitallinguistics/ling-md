@@ -2,7 +2,11 @@
  * @module Parser
  */
 
-import { Marked } from 'marked'
+import bold          from './extensions/bold.js'
+import inlineExample from './extensions/inlineExample.js'
+import { Marked }    from 'marked'
+
+const extensions = [bold, inlineExample]
 
 /**
  * The Parser class.
@@ -12,7 +16,7 @@ export default class Parser {
   /**
    * The current marked instance.
    */
-  marked = new Marked
+  marked = new Marked({ extensions })
 
   /**
    * Parse linguistics-flavored markdown to HTML.
