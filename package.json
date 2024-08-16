@@ -1,5 +1,5 @@
 {
-  "name": "ling-md",
+  "name": "@digitallinguistics/ling-md",
   "version": "0.1.0",
   "description": "A JS library to convert linguistics-flavored markdown to HTML.",
   "keywords": [
