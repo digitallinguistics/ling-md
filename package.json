@@ -30,5 +30,8 @@
     "@stylistic/eslint-plugin-js": "^2.6.4",
     "chai": "^5.1.1",
     "eslint": "^9.9.0"
+  },
+  "dependencies": {
+    "marked": "^14.0.0"
   }
 }
