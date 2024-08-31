@@ -17,7 +17,6 @@ export default {
   tokenizer(src) {
 
     const match = inexRegExp.exec(src)
-    console.log(src, Boolean(match))
 
     if (match) {
 

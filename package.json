@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/digitallinguistics/ling-md.git"
   },
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "stop-only": "stop-only --file index.test.js",
