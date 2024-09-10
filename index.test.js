@@ -4,7 +4,7 @@ import { describe, it } from 'node:test'
 
 const parser = new Parser
 
-describe.only(`ling-md`, function() {
+describe(`ling-md`, function() {
 
   it(`converts regular markdown`, function() {
     const md   = `# Hello, [World](#)!`
@@ -25,7 +25,7 @@ describe.only(`ling-md`, function() {
   describe.only(`attributes`, function() {
 
     // NB: This tests both built-in renderers and extensions.
-    it.only(`inline elements`, function() {
+    it(`inline elements`, function() {
       const md   = `This is an _emphasized_{.class} *word*{.class}.`
       const html = parser.parse(md)
       expect(html).to.equal(`<p>This is an <em class="class">emphasized</em> <i class="class">word</i>.</p>\n`)
@@ -49,7 +49,7 @@ describe.only(`ling-md`, function() {
       expect(html).to.equal(`<ul>\n<li>list item <b class="red">bold</b></li>\n</ul>\n`)
     })
 
-    it(`fenced code blocks`)
+    it.only(`fenced code blocks`)
 
   })
 

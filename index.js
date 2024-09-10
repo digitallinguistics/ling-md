@@ -6,9 +6,9 @@ import bold                   from './extensions/bold.js'
 import inlineExample          from './extensions/inlineExample.js'
 import { marked }             from 'marked'
 
-import { override, tokenizeAttributes } from './extensions/attributes/index.js'
+import attributes from './extensions/attributes/index.js'
 
-const extensions = [tokenizeAttributes, bold, inlineExample]
+const extensions = [bold, inlineExample]
 
 /**
  * The Parser class.
@@ -20,9 +20,12 @@ export default class Parser {
    */
   marked = marked
 
+  /**
+   * Create a new linguistics markdown parser instance.
+   */
   constructor() {
     this.marked.use({ extensions })
-    override(this.marked)
+    attributes(this.marked)
   }
 
   /**
