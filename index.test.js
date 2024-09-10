@@ -22,7 +22,7 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This contains an <i>inline example</i>.</p>\n`)
   })
 
-  describe.only(`attributes`, function() {
+  describe(`attributes`, function() {
 
     // NB: This tests both built-in renderers and extensions.
     it(`inline elements`, function() {
@@ -49,7 +49,17 @@ describe(`ling-md`, function() {
       expect(html).to.equal(`<ul>\n<li>list item <b class="red">bold</b></li>\n</ul>\n`)
     })
 
-    it.only(`fenced code blocks`)
+    it(`fenced code blocks without lang`, function() {
+      const md   = `\`\`\` {.red}\nconsole.log("Hello, World!")\n\`\`\``
+      const html = parser.parse(md)
+      expect(html).to.equal(`<pre><code class="red">console.log(&quot;Hello, World!&quot;)\n</code></pre>\n`)
+    })
+
+    it(`fenced code blocks with lang`, function() {
+      const md   = `\`\`\`js {.red}\nconsole.log("Hello, World!")\n\`\`\``
+      const html = parser.parse(md)
+      expect(html).to.equal(`<pre><code class="language-js red">console.log(&quot;Hello, World!&quot;)\n</code></pre>\n`)
+    })
 
   })
 

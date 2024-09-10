@@ -5,11 +5,14 @@ const attrRegExp = /^\{(?<attributes>.+?)\}/v // Anchored to start of string
 export default {
 
   level: `inline`,
-
-  name: `attributes`,
+  name:  `attributes`,
 
   renderer() {
     return ``
+  },
+
+  start(src) {
+    return src.indexOf(`{`) === 0
   },
 
   tokenizer(src, tokens) {

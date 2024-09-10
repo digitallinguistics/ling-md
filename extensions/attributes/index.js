@@ -1,14 +1,20 @@
+import code               from './code.js'
+import fencedCode         from './fences.js'
+import provideLexer       from './blockLexer.js'
 import tokenizeAttributes from './tokenizeAttributes.js'
 import withAttributes     from './withAttributes.js'
-
-import setupBlockAttributes from './block.js'
 
 // built-in:   marked.Renderer.prototype
 // extensions: marked.defaults.extensions.renderers
 
+const blockMethods = [
+  `code`, // Requires special handling because attributes don't go on the outer element.
+  `constructor`,
+]
+
 export default function setup(marked) {
 
-  const baseMethodNames = Object.getOwnPropertyNames(marked.Renderer.prototype).filter(name => name !== `constructor`)
+  const baseMethodNames = Object.getOwnPropertyNames(marked.Renderer.prototype).filter(name => !blockMethods.includes(name))
   const extensionNames  = Object.keys(marked.defaults.extensions.renderers)
 
   const renderer = {}
@@ -22,12 +28,10 @@ export default function setup(marked) {
   }
 
   marked.use({
-    extensions: [tokenizeAttributes],
+    extensions: [code, fencedCode, tokenizeAttributes],
+    hooks:      { provideLexer },
     renderer,
   })
-
-  // TODO: Invert dependency injection here once you decide how the block extension will work.
-  setupBlockAttributes(marked)
 
 }
 

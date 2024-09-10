@@ -2,9 +2,9 @@
  * @module Parser
  */
 
-import bold                   from './extensions/bold.js'
-import inlineExample          from './extensions/inlineExample.js'
-import { marked }             from 'marked'
+import bold          from './extensions/bold.js'
+import inlineExample from './extensions/inlineExample.js'
+import { marked }    from 'marked'
 
 import attributes from './extensions/attributes/index.js'
 
