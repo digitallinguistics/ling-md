@@ -4,9 +4,6 @@ import provideLexer       from './blockLexer.js'
 import tokenizeAttributes from './tokenizeAttributes.js'
 import withAttributes     from './withAttributes.js'
 
-// built-in:   marked.Renderer.prototype
-// extensions: marked.defaults.extensions.renderers
-
 const blockMethods = [
   `code`, // Requires special handling because attributes don't go on the outer element.
   `constructor`,
