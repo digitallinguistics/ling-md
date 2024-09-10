@@ -22,6 +22,7 @@ export default {
 
       const token = {
         raw:    match[0],
+        text:   match.groups.text,
         tokens: [],
         type:   `inlineExample`,
       }

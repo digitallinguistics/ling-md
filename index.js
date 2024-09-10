@@ -2,11 +2,13 @@
  * @module Parser
  */
 
-import bold          from './extensions/bold.js'
-import inlineExample from './extensions/inlineExample.js'
-import { Marked }    from 'marked'
+import bold                   from './extensions/bold.js'
+import inlineExample          from './extensions/inlineExample.js'
+import { marked }             from 'marked'
 
-const extensions = [bold, inlineExample]
+import { override, tokenizeAttributes } from './extensions/attributes/index.js'
+
+const extensions = [tokenizeAttributes, bold, inlineExample]
 
 /**
  * The Parser class.
@@ -16,7 +18,12 @@ export default class Parser {
   /**
    * The current marked instance.
    */
-  marked = new Marked({ extensions })
+  marked = marked
+
+  constructor() {
+    this.marked.use({ extensions })
+    override(this.marked)
+  }
 
   /**
    * Parse linguistics-flavored markdown to HTML.
