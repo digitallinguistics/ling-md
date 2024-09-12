@@ -1,6 +1,6 @@
 import parseAttributes from 'attributes-parser'
 
-const attrRegExp = /^\{(?<attributes>.+?)\}/v // Anchored to start of string
+const attrRegExp = /^\s*\{(?<attributes>.+?)\}/v // Anchored to start of string
 
 export default {
 

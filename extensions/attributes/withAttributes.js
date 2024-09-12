@@ -1,7 +1,7 @@
 import { createAttributesString, tagNameRegExp } from './utilities.js'
 
 /**
- * Decorate a rendering function to add attributes to the output HTML.
+ * Decorate a rendering function to add attributes to the output HTML, using the `token.attributes` property.
  * @param {Function} render The original rendering function. Must accept a token and return HTML.
  */
 export default function withAttributes(render) {

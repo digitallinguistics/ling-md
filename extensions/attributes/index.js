@@ -1,8 +1,8 @@
-import code               from './code.js'
-import fencedCode         from './fences.js'
-import provideLexer       from './blockLexer.js'
-import tokenizeAttributes from './tokenizeAttributes.js'
-import withAttributes     from './withAttributes.js'
+import blockAttributes      from './blockAttributes.js'
+import codeAttributes       from './codeAttributes.js'
+import fencedCodeAttributes from './fencedCodeAttributes.js'
+import inlineAttributes     from './inlineAttributes.js'
+import withAttributes       from './withAttributes.js'
 
 const blockMethods = [
   `code`, // Requires special handling because attributes don't go on the outer element.
@@ -25,12 +25,13 @@ export default function setup(marked) {
   }
 
   marked.use({
-    extensions: [code, fencedCode, tokenizeAttributes],
-    hooks:      { provideLexer },
+    extensions: [blockAttributes, codeAttributes, fencedCodeAttributes, inlineAttributes],
     renderer,
   })
 
 }
 
-setup.withAttributes     = withAttributes
-setup.tokenizeAttributes = tokenizeAttributes
+setup.blockAttributes      = blockAttributes
+setup.renderCodeAttributes = codeAttributes
+setup.inlineAttributes     = inlineAttributes
+setup.withAttributes       = withAttributes
