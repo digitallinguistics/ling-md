@@ -2,6 +2,7 @@
  * @module Parser
  */
 
+import { alert }            from '@mdit/plugin-alert'
 import attributes           from 'markdown-it-attrs'
 import boldItalic           from 'markdown-it-ib'
 import bracketedSpans       from 'markdown-it-bracketed-spans'
@@ -39,6 +40,7 @@ export default class Parser {
    */
   constructor() {
     this.engine
+      .use(alert)
       .use(attributes) // Must come before headerAnchors
       .use(boldItalic)
       .use(bracketedSpans)

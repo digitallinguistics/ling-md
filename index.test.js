@@ -16,6 +16,12 @@ describe(`ling-md`, function() {
     expect(parser.engine.constructor.name).to.equal(`MarkdownIt`)
   })
 
+  it(`alerts`, function() {
+    const md   = `> [!note]\n> This is the note text.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<div class="markdown-alert markdown-alert-note">\n<p class="markdown-alert-title">Note</p>\n<p>This is the note text.</p>\n</div>\n`)
+  })
+
   describe(`attributes`, function() {
 
     it(`block elements`, function() {

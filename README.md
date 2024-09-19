@@ -40,6 +40,7 @@ The library enables the following features by default:
 
 | Feature                | Markdown                                                                                                     | HTML                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| alerts                 | <pre><code>&gt; [!note]<br>&gt; Note Text</code></pre>                                                       | [See documentation here.][alert]                                                       |
 | block attributes       | `# Heading {#intro}`                                                                                         | `<h1 id=intro>Heading</h1>`                                                            |
 | bracketed spans        | `[/lɪŋˈɡwɪstɪks/]{.phon}`                                                                                    | `<span class="phon">/lɪŋˈɡwɪstɪks/</span>`                                             |
 | checklists             | [See documentation here.][checklists]                                                                        |                                                                                        |
@@ -82,6 +83,7 @@ Parse a markdown string using the current options and return HTML.
 - There is no markdown shortcut for underlining. Use the `<u>` tag instead.
 
 <!-- LINKS -->
+[alert]:           https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
 [attrs-parser]:    https://www.npmjs.com/package/attributes-parser
 [checklists]:      https://www.markdownguide.org/extended-syntax/#task-lists
 [def-lists]:       https://pandoc.org/MANUAL.html#definition-lists
