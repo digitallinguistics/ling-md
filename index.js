@@ -14,7 +14,10 @@ import markedText           from 'markdown-it-mark'
 import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
 import tableCaptions        from 'markdown-it-table-captions'
+import { tasklist }         from '@mdit/plugin-tasklist'
 import toc                  from 'markdown-it-table-of-contents'
+
+import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax'
 
 const options = {
   html:        true,
@@ -44,9 +47,11 @@ export default class Parser {
       .use(headerAnchors)
       .use(insertedText)
       .use(markedText)
+      .use(mathjax, createMathjaxInstance())
       .use(subscript)
       .use(superscript)
       .use(tableCaptions)
+      .use(tasklist)
       .use(toc)
   }
 

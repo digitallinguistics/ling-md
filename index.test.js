@@ -68,6 +68,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p><span class="class">bracketed spans</span></p>\n`)
   })
 
+  it(`checklists`, function() {
+    const md = `- [ ] Unchecked\n- [x] Checked`
+    const html = parser.parse(md)
+    expect(html).to.contain(`<input`)
+  })
+
   it(`definition lists`, function() {
     const md = `term 1\n: definition 1\n\nterm 2\n: definition 2`
     const html = parser.parse(md)
@@ -114,6 +120,12 @@ describe(`ling-md`, function() {
     const md   = `This includes ==marked text==.`
     const html = parser.parse(md)
     expect(html).to.equal(`<p>This includes <mark>marked text</mark>.</p>\n`)
+  })
+
+  it(`math`, function() {
+    const md   = `This is an inline math example: $x^2 + y^2 = z^2$`
+    const html = parser.parse(md)
+    expect(html).to.contain(`svg`)
   })
 
   it(`“smart quotes”`, function() {

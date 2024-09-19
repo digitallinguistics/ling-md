@@ -42,6 +42,7 @@ The library enables the following features by default:
 | ---------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | block attributes       | `# Heading {#intro}`                                                                                         | `<h1 id=intro>Heading</h1>`                                                            |
 | bracketed spans        | `[/lɪŋˈɡwɪstɪks/]{.phon}`                                                                                    | `<span class="phon">/lɪŋˈɡwɪstɪks/</span>`                                             |
+| checklists             | [See documentation here.][checklists]                                                                        |                                                                                        |
 | definition lists       | [See documentation here.][def-lists]                                                                         |                                                                                        |
 | fenced code attributes | <pre><code>\```js {.code-example}<br>console.log('Hello world!')<br>```</code></pre>                         | `<pre><code class="language-js code-example">console.log('Hello world!')</code></pre>` |
 | footnotes              | <pre><code>Here is a footnote reference,[^1] and some more text.\n\n[^1]: Here is the footnote.</code></pre> | [See example here.][fn]                                                                |
@@ -50,6 +51,7 @@ The library enables the following features by default:
 | inline attributes      | `*perro*{.example lang=spa}`                                                                                 | `<i class="example" lang="spa>perro</i>`                                               |
 | inserted text          | `++inserted text++`                                                                                          | `<ins>inserted text</ins>`                                                             |
 | marked text            | `==marked text==`                                                                                            | `<mark>marked text</mark>`                                                             |
+| math (LaTeX)           | `Euler’s identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.`                                  | (Outputs an image.)                                                                    |
 | smart quotes           | `"Hello world!"`                                                                                             | `“Hello world!”`                                                                       |
 | tables                 | [See documentation here.][tables]                                                                            |                                                                                        |
 | strikethrough          | `~~This was mistaken text.~~`                                                                                | `<s>This was mistaken text.</s>`                                                       |
@@ -81,6 +83,7 @@ Parse a markdown string using the current options and return HTML.
 
 <!-- LINKS -->
 [attrs-parser]:    https://www.npmjs.com/package/attributes-parser
+[checklists]:      https://www.markdownguide.org/extended-syntax/#task-lists
 [def-lists]:       https://pandoc.org/MANUAL.html#definition-lists
 [em-article]:      https://blog.logrocket.com/youre-using-em-wrong/
 [fn]:              https://www.npmjs.com/package/markdown-it-footnote
