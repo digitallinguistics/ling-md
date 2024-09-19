@@ -45,10 +45,13 @@ The library enables the following features by default:
 | fenced code attributes | <pre><code>\```js {.code-example}<br>console.log('Hello world!')<br>```</code></pre>                         | `<pre><code class="language-js code-example">console.log('Hello world!')</code></pre>` |
 | footnotes              | <pre><code>Here is a footnote reference,[^1] and some more text.\n\n[^1]: Here is the footnote.</code></pre> | [See example here.][fn]                                                                |
 | header anchors         | `# Header Title`                                                                                             | `<h1 id="header-title">Header Title</h1>`                                              |
+| HTML                   | `<b>bold</b>`                                                                                                | `<b>bold</b>`                                                                          |
 | inline attributes      | `*perro*{.example lang=spa}`                                                                                 | `<i class="example" lang="spa>perro</i>`                                               |
+| marked text            | `==marked text==`                                                                                            | `<mark>marked text</mark>`                                                             |
 | smart quotes           | `"Hello world!"`                                                                                             | `“Hello world!”`                                                                       |
 | tables                 | [See documentation here.][tables]                                                                            |                                                                                        |
 | strikethrough          | `~~This was mistaken text.~~`                                                                                | `<s>This was mistaken text.</s>`                                                       |
+| superscript            | `^superscript^`                                                                                              | `<sup>superscript</sup>`                                                               |
 | typography             | `-- --- ...`                                                                                                 | `– — …`                                                                                |
 
 ## API
