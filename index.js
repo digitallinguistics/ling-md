@@ -6,6 +6,7 @@ import attributes           from 'markdown-it-attrs'
 import boldItalic           from 'markdown-it-ib'
 import bracketedSpans       from 'markdown-it-bracketed-spans'
 import createMarkdownParser from 'markdown-it'
+import defLists             from 'markdown-it-deflist'
 import footnotes            from 'markdown-it-footnote'
 import headerAnchors        from 'markdown-it-anchor'
 import insertedText         from 'markdown-it-ins'
@@ -36,6 +37,7 @@ export default class Parser {
       .use(attributes) // Must come before headerAnchors
       .use(boldItalic)
       .use(bracketedSpans)
+      .use(defLists)
       .use(footnotes)
       .use(headerAnchors)
       .use(insertedText)

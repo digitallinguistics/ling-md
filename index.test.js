@@ -68,6 +68,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p><span class="class">bracketed spans</span></p>\n`)
   })
 
+  it(`definition lists`, function() {
+    const md = `term 1\n: definition 1\n\nterm 2\n: definition 2`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<dl>\n<dt>term 1</dt>\n<dd>definition 1</dd>\n<dt>term 2</dt>\n<dd>definition 2</dd>\n</dl>\n`)
+  })
+
   it(`_emphasis_`, function() {
     const md   = `This is an _emphasized_ word.`
     const html = parser.parse(md)
