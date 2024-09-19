@@ -6,6 +6,7 @@ import attributes           from 'markdown-it-attrs'
 import boldItalic           from 'markdown-it-ib'
 import bracketedSpans       from 'markdown-it-bracketed-spans'
 import createMarkdownParser from 'markdown-it'
+import footnotes            from 'markdown-it-footnote'
 import headerAnchors        from 'markdown-it-anchor'
 
 const options = {
@@ -31,6 +32,7 @@ export default class Parser {
       .use(attributes) // Must come before headerAnchors
       .use(boldItalic)
       .use(bracketedSpans)
+      .use(footnotes)
       .use(headerAnchors)
   }
 

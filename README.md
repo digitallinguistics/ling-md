@@ -38,17 +38,18 @@ The library enables the following features by default:
 
 ### General
 
-| Feature                | Markdown                                                                             | HTML                                                                                   |
-| ---------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| block attributes       | `# Heading {#intro}`                                                                 | `<h1 id=intro>Heading</h1>`                                                            |
-| bracketed spans        | `[/lɪŋˈɡwɪstɪks/]{.phon}`                                                            | `<span class="phon">/lɪŋˈɡwɪstɪks/</span>`                                             |
-| fenced code attributes | <pre><code>\```js {.code-example}<br>console.log('Hello world!')<br>```</code></pre> | `<pre><code class="language-js code-example">console.log('Hello world!')</code></pre>` |
-| header anchors         | `# Header Title`                                                                     | `<h1 id="header-title">Header Title</h1>`                                              |
-| inline attributes      | `*perro*{.example lang=spa}`                                                         | `<i class="example" lang="spa>perro</i>`                                               |
-| smart quotes           | `"Hello world!"`                                                                     | `“Hello world!”`                                                                       |
-| tables                 | [See documentation here.][tables]                                                    |                                                                                        |
-| strikethrough          | `~~This was mistaken text.~~`                                                        | `<s>This was mistaken text.</s>`                                                       |
-| typography             | `-- --- ...`                                                                         | `– — …`                                                                                |
+| Feature                | Markdown                                                                                                     | HTML                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| block attributes       | `# Heading {#intro}`                                                                                         | `<h1 id=intro>Heading</h1>`                                                            |
+| bracketed spans        | `[/lɪŋˈɡwɪstɪks/]{.phon}`                                                                                    | `<span class="phon">/lɪŋˈɡwɪstɪks/</span>`                                             |
+| fenced code attributes | <pre><code>\```js {.code-example}<br>console.log('Hello world!')<br>```</code></pre>                         | `<pre><code class="language-js code-example">console.log('Hello world!')</code></pre>` |
+| footnotes              | <pre><code>Here is a footnote reference,[^1] and some more text.\n\n[^1]: Here is the footnote.</code></pre> | [See example here.][fn]                                                                |
+| header anchors         | `# Header Title`                                                                                             | `<h1 id="header-title">Header Title</h1>`                                              |
+| inline attributes      | `*perro*{.example lang=spa}`                                                                                 | `<i class="example" lang="spa>perro</i>`                                               |
+| smart quotes           | `"Hello world!"`                                                                                             | `“Hello world!”`                                                                       |
+| tables                 | [See documentation here.][tables]                                                                            |                                                                                        |
+| strikethrough          | `~~This was mistaken text.~~`                                                                                | `<s>This was mistaken text.</s>`                                                       |
+| typography             | `-- --- ...`                                                                                                 | `– — …`                                                                                |
 
 ## API
 
@@ -72,6 +73,7 @@ Parse a markdown string using the current options and return HTML.
 <!-- LINKS -->
 [attrs-parser]: https://www.npmjs.com/package/attributes-parser
 [em-article]:   https://blog.logrocket.com/youre-using-em-wrong/
+[fn]:           https://www.npmjs.com/package/markdown-it-footnote
 [i]:            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
 [markdown-it]:  https://github.com/markdown-it/markdown-it#readme
 [spec]:         https://github.com/digitallinguistics/ling-markdown-spec
