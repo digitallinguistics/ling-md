@@ -9,7 +9,7 @@ describe(`ling-md`, function() {
   it(`converts regular markdown`, function() {
     const md   = `# Hello, [World](#)!`
     const html = parser.parse(md)
-    expect(html).to.equal(`<h1>Hello, <a href="#">World</a>!</h1>\n`)
+    expect(html).to.equal(`<h1 id="hello%2C-world!" tabindex="-1">Hello, <a href="#">World</a>!</h1>\n`)
   })
 
   it(`exposes the marked instance`, function() {
@@ -33,7 +33,7 @@ describe(`ling-md`, function() {
     it(`block elements`, function() {
       const md   = `# Header {.header}`
       const html = parser.parse(md)
-      expect(html).to.equal(`<h1 class="header">Header</h1>\n`)
+      expect(html).to.equal(`<h1 class="header" id="header" tabindex="-1">Header</h1>\n`)
     })
 
     it(`block elements that contain inline elements`, function() {

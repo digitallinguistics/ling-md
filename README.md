@@ -43,6 +43,7 @@ The library enables the following features by default:
 | block attributes       | `# Heading {#intro}`                                                                 | `<h1 id=intro>Heading</h1>`                                                            |
 | bracketed spans        | `[/lɪŋˈɡwɪstɪks/]{.phon}`                                                            | `<span class="phon">/lɪŋˈɡwɪstɪks/</span>`                                             |
 | fenced code attributes | <pre><code>\```js {.code-example}<br>console.log('Hello world!')<br>```</code></pre> | `<pre><code class="language-js code-example">console.log('Hello world!')</code></pre>` |
+| header anchors         | `# Header Title`                                                                     | `<h1 id="header-title">Header Title</h1>`                                              |
 | inline attributes      | `*perro*{.example lang=spa}`                                                         | `<i class="example" lang="spa>perro</i>`                                               |
 | smart quotes           | `"Hello world!"`                                                                     | `“Hello world!”`                                                                       |
 | tables                 | [See documentation here.][tables]                                                    |                                                                                        |

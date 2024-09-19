@@ -6,6 +6,7 @@ import attributes           from 'markdown-it-attrs'
 import boldItalic           from 'markdown-it-ib'
 import bracketedSpans       from 'markdown-it-bracketed-spans'
 import createMarkdownParser from 'markdown-it'
+import headerAnchors        from 'markdown-it-anchor'
 
 const options = {
   html:        true,
@@ -27,9 +28,10 @@ export default class Parser {
    */
   constructor() {
     this.engine
-      .use(attributes)
+      .use(attributes) // Must come before headerAnchors
       .use(boldItalic)
       .use(bracketedSpans)
+      .use(headerAnchors)
   }
 
   /**
