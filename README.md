@@ -46,6 +46,7 @@ The library enables the following features by default:
 | smart quotes           | `"Hello world!"`                                                                     | `“Hello world!”`                                                                       |
 | tables                 | [See documentation here.][tables]                                                    |                                                                                        |
 | strikethrough          | `~~This was mistaken text.~~`                                                        | `<s>This was mistaken text.</s>`                                                       |
+| typography             | `-- --- ...`                                                                         | `– — …`                                                                                |
 
 ## API
 
