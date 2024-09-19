@@ -1,5 +1,37 @@
-import tokenizeAttributes from './tokenizeAttributes.js'
+import parseAttributes from 'attributes-parser'
 
-tokenizeAttributes.level = `inline`
+const attrRegExp = /^\s*\{(?<attributes>.+?)\}/v // Anchored to start of string
 
-export default tokenizeAttributes
+export default {
+
+  level: `inline`,
+
+  name: `attributes`,
+
+  renderer() {
+    return ``
+  },
+
+  start(src) {
+    return src.indexOf(`{`) === 0
+  },
+
+  tokenizer(src, tokens) {
+
+    const match = attrRegExp.exec(src)
+    const token = tokens.at(-1)
+
+    if (match && tokens.length) {
+
+      token.attributes = parseAttributes(match.groups.attributes)
+
+      return {
+        raw:  match[0],
+        type: `attributes`,
+      }
+
+    }
+
+  },
+
+}

@@ -1,7 +1,7 @@
-import blockAttributes      from './blockAttributes.js'
 import codeAttributes       from './codeAttributes.js'
 import fencedCodeAttributes from './fencedCodeAttributes.js'
 import inlineAttributes     from './inlineAttributes.js'
+import provideLexer         from './blockLexer.js'
 import withAttributes       from './withAttributes.js'
 
 const blockMethods = [
@@ -25,13 +25,9 @@ export default function setup(marked) {
   }
 
   marked.use({
-    extensions: [blockAttributes, codeAttributes, fencedCodeAttributes, inlineAttributes],
+    extensions: [codeAttributes, fencedCodeAttributes, inlineAttributes],
+    hooks:      { provideLexer },
     renderer,
   })
 
 }
-
-setup.blockAttributes      = blockAttributes
-setup.renderCodeAttributes = codeAttributes
-setup.inlineAttributes     = inlineAttributes
-setup.withAttributes       = withAttributes
