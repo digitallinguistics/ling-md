@@ -14,7 +14,12 @@ export default function translations(md, { tag }) {
 
       const inlineTokens = token.children
 
-      for (const inlineToken of inlineTokens) {
+      // Process inlineTokens in reverse order. Not sure why, but content gets duplicated otherwise.
+      // The core rules in markdown-it itself iterate over the tokens in reverse order:
+      // https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.mjs
+      for (let i = inlineTokens.length - 1; i >= 0; i--) {
+
+        const inlineToken = inlineTokens[i]
 
         if (inlineToken.type !== `text`) continue
 
@@ -24,7 +29,7 @@ export default function translations(md, { tag }) {
         if (!matches.length) continue
 
         const newTokens = []
-        let lastIndex = 0 // The index of the end of the previous match.
+        let   lastIndex = 0   // The index of the end of the previous match.
 
         for (const match of matches) {
 
@@ -51,17 +56,17 @@ export default function translations(md, { tag }) {
           newTokens.push(openingTag, contentToken, closingTag) // Add the new tokens.
           lastIndex = match.index + match[0].length            // Update the index of the end of the previous match.
 
-          // If there is text after the last match, add it as a text token.
-          if (lastIndex < content.length) {
-            const textToken = new Token(`text`, ``, 0)
-            textToken.content = content.slice(lastIndex)
-            newTokens.push(textToken)
-          }
-
-          // Replace the original token with the new tokens.
-          inlineTokens.splice(inlineTokens.indexOf(inlineToken), 1, ...newTokens)
-
         }
+
+        // If there is text after the last match, add it as a text token.
+        if (lastIndex < content.length) {
+          const textToken = new Token(`text`, ``, 0)
+          textToken.content = content.slice(lastIndex)
+          newTokens.push(textToken)
+        }
+
+        // Replace the original token with the new tokens.
+        inlineTokens.splice(i, 1, ...newTokens)
 
       }
 
