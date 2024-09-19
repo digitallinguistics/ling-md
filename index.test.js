@@ -140,6 +140,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This includes <sub>subscript</sub> text.</p>\n`)
   })
 
+  it(`TOC`, function() {
+    const md   = `[[toc]]\n\n# Header\n\n## Subheader`
+    const html = parser.parse(md)
+    expect(html).to.include(`class="table-of-contents`)
+  })
+
   it(`typography`, function() {
 
     const md = `2000--2010

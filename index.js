@@ -13,6 +13,7 @@ import insertedText         from 'markdown-it-ins'
 import markedText           from 'markdown-it-mark'
 import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
+import toc                  from 'markdown-it-table-of-contents'
 
 const options = {
   html:        true,
@@ -44,6 +45,7 @@ export default class Parser {
       .use(markedText)
       .use(subscript)
       .use(superscript)
+      .use(toc)
   }
 
   /**
