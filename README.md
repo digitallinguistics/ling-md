@@ -44,6 +44,8 @@ The library enables the following features by default:
 | fenced code attributes | <pre><code>\```js {.code-example}<br>console.log('Hello world!')<br>```</code></pre> | `<pre><code class="language-js code-example">console.log('Hello world!')</code></pre>` |
 | inline attributes      | `*perro*{.example lang=spa}`                                                         | `<i class="example" lang="spa>perro</i>`                                               |
 | smart quotes           | `"Hello world!"`                                                                     | `“Hello world!”`                                                                       |
+| tables                 | [See documentation here.][tables]                                                    |                                                                                        |
+| strikethrough          | `~~This was mistaken text.~~`                                                        | `<s>This was mistaken text.</s>`                                                       |
 
 ## API
 
@@ -62,6 +64,7 @@ Parse a markdown string using the current options and return HTML.
   - `.className` > `class="className"`
   - `#name` > `id="name"`
   - `attr=val` > `attr="val"` (`data-*` attributes also work)
+- There is no markdown shortcut for underlining. Use the `<u>` tag instead.
 
 <!-- LINKS -->
 [attrs-parser]: https://www.npmjs.com/package/attributes-parser
@@ -69,3 +72,4 @@ Parse a markdown string using the current options and return HTML.
 [i]:            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
 [markdown-it]:  https://github.com/markdown-it/markdown-it#readme
 [spec]:         https://github.com/digitallinguistics/ling-markdown-spec
+[tables]:       https://www.markdownguide.org/extended-syntax/#tables

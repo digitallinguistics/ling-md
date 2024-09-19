@@ -92,4 +92,16 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>“‘Hello world!’, he said.”</p>\n`)
   })
 
+  it.only(`smart typography`, function() {
+
+    const md = `2000--2010
+    This is a sentence---with an aside.
+    Hello...?`
+
+    const html = parser.parse(md)
+
+    expect(html).to.equal(`<p>2000–2010\nThis is a sentence—with an aside.\nHello…?</p>\n`)
+
+  })
+
 })
