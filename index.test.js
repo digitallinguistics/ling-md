@@ -98,6 +98,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p><i>inline example <b>with bold</b></i></p>\n`)
   })
 
+  it(`++inserted text++`, function() {
+    const md   = `This includes ++inserted text++.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>This includes <ins>inserted text</ins>.</p>\n`)
+  })
+
   it(`==marked text==`, function() {
     const md   = `This includes ==marked text==.`
     const html = parser.parse(md)
