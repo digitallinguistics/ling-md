@@ -20,7 +20,7 @@ Create a new parser instance and parse the linguistics-flavored markdown:
 import Parser from '@digitallinguistics/ling-md'
 
 const markdown = `The word *perro* in Spanish means ''dog''.`
-const parser   = new Parser
+const parser   = new Parser({ /* options */ })
 const html     = parser.parse(markdown)
 
 console.log(html) // <p>The word <i>perro</i> in Spanish means <q>dog</q>.</p>
@@ -32,10 +32,11 @@ The library enables the following features by default:
 
 ### Linguistics
 
-| Feature             | Markdown                       | HTML                                       |
-| ------------------- | ------------------------------ | ------------------------------------------ |
-| grammatical glosses | `^^fut^^`                      | `<abbr class="gl">fut</abbr>`              |
-| inline examples     | `The word *perro* is Spanish.` | `<p>The word <i>perro</i> is Spanish.</p>` |
+| Feature             | Markdown                          | HTML                                             |
+| ------------------- | --------------------------------- | ------------------------------------------------ |
+| grammatical glosses | `^^fut^^`                         | `<abbr class="gl">fut</abbr>`                    |
+| inline examples     | `The word *perro* is Spanish.`    | `<p>The word <i>perro</i> is Spanish.</p>`       |
+| inline translations | `The word *perro* means ''dog''.` | `<p>The word <i>perro</i> means <q>dog</q>.</p>` |
 
 ### General
 
@@ -73,6 +74,12 @@ Provides access to the `marked` instance for further customization.
 ### `parse(md)`
 
 Parse a markdown string using the current options and return HTML.
+
+### Options
+
+| Option         | Type      | Default | Description                                                                                                                 |
+| -------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `translations` | `q\|span` | `q`     | Whether to use a `<q>` element or `<span class=tln>` for translations. `<span>`s will wrap the inner text in single quotes. |
 
 ## Usage Notes
 

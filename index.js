@@ -12,6 +12,7 @@ import footnotes            from 'markdown-it-footnote'
 import fractions            from './plugins/fractions.js'
 import glosses              from './plugins/glosses.js'
 import headerAnchors        from 'markdown-it-anchor'
+import inlineTranslations   from './plugins/translations.js'
 import insertedText         from 'markdown-it-ins'
 import markedText           from 'markdown-it-mark'
 import ordinals             from './plugins/ordinals.js'
@@ -41,7 +42,7 @@ export default class Parser {
   /**
    * Create a new linguistics markdown parser instance.
    */
-  constructor() {
+  constructor({ translations = `q` } = {}) {
     this.engine
       .use(alert)
       .use(attributes) // Must come before headerAnchors
@@ -52,6 +53,7 @@ export default class Parser {
       .use(fractions)
       .use(glosses)
       .use(headerAnchors)
+      .use(inlineTranslations, { translations })
       .use(insertedText)
       .use(markedText)
       .use(mathjax, createMathjaxInstance())
