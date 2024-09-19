@@ -2,10 +2,11 @@
  * @module Parser
  */
 
-import attributes    from './extensions/attributes/index.js'
-import bold          from './extensions/bold.js'
-import inlineExample from './extensions/inlineExample.js'
-import { marked }    from 'marked'
+import attributes            from './extensions/attributes/index.js'
+import bold                  from './extensions/bold.js'
+import inlineExample         from './extensions/inlineExample.js'
+import { marked }            from 'marked'
+import { markedSmartypants } from 'marked-smartypants'
 
 const extensions = [bold, inlineExample]
 
@@ -24,6 +25,7 @@ export default class Parser {
    */
   constructor() {
     this.marked.use({ extensions })
+    this.marked.use(markedSmartypants())
     attributes(this.marked)
   }
 

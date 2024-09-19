@@ -81,4 +81,10 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p><i>inline example <b>with bold</b></i></p>\n`)
   })
 
+  it(`“smart quotes”`, function() {
+    const md   = `"'Hello world!', he said."`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>&#8220;&#8216;Hello world!&#8217;, he said.&#8221;</p>\n`)
+  })
+
 })
