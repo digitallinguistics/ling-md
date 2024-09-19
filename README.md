@@ -54,6 +54,7 @@ The library enables the following features by default:
 | tables                 | [See documentation here.][tables]                                                                            |                                                                                        |
 | strikethrough          | `~~This was mistaken text.~~`                                                                                | `<s>This was mistaken text.</s>`                                                       |
 | subscript              | `~subscript~`                                                                                                | `<sub>subscript</sub>`                                                                 |
+| summary + details      | [See documentation here.][summary-details]                                                                   |                                                                                        |
 | superscript            | `^superscript^`                                                                                              | `<sup>superscript</sup>`                                                               |
 | typography             | `-- --- ...`                                                                                                 | `– — …`                                                                                |
 
@@ -77,11 +78,12 @@ Parse a markdown string using the current options and return HTML.
 - There is no markdown shortcut for underlining. Use the `<u>` tag instead.
 
 <!-- LINKS -->
-[attrs-parser]: https://www.npmjs.com/package/attributes-parser
-[def-lists]:    https://pandoc.org/MANUAL.html#definition-lists
-[em-article]:   https://blog.logrocket.com/youre-using-em-wrong/
-[fn]:           https://www.npmjs.com/package/markdown-it-footnote
-[i]:            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
-[markdown-it]:  https://github.com/markdown-it/markdown-it#readme
-[spec]:         https://github.com/digitallinguistics/ling-markdown-spec
-[tables]:       https://www.markdownguide.org/extended-syntax/#tables
+[attrs-parser]:    https://www.npmjs.com/package/attributes-parser
+[def-lists]:       https://pandoc.org/MANUAL.html#definition-lists
+[em-article]:      https://blog.logrocket.com/youre-using-em-wrong/
+[fn]:              https://www.npmjs.com/package/markdown-it-footnote
+[i]:               https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+[markdown-it]:     https://github.com/markdown-it/markdown-it#readme
+[spec]:            https://github.com/digitallinguistics/ling-markdown-spec
+[summary-details]: https://www.npmjs.com/package/markdown-it-collapsible
+[tables]:          https://www.markdownguide.org/extended-syntax/#tables
