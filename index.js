@@ -24,7 +24,7 @@ import toc                  from 'markdown-it-table-of-contents'
 
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax'
 
-const options = {
+const defaultMarkdownOptions = {
   html:        true,
   typographer: true,
 }
@@ -35,14 +35,17 @@ const options = {
 export default class Parser {
 
   /**
-   * The current marked instance.
-   */
-  engine = createMarkdownParser(options)
-
-  /**
    * Create a new linguistics markdown parser instance.
    */
-  constructor({ translations = `q` } = {}) {
+  constructor({
+    markdown     = defaultMarkdownOptions,
+    translations = `span`,
+  } = {}) {
+
+    const markdownOptions = Object.assign({}, defaultMarkdownOptions, markdown)
+
+    this.engine = createMarkdownParser(markdownOptions)
+
     this.engine
       .use(alert)
       .use(attributes) // Must come before headerAnchors
@@ -53,7 +56,7 @@ export default class Parser {
       .use(fractions)
       .use(glosses)
       .use(headerAnchors)
-      .use(inlineTranslations, { translations })
+      .use(inlineTranslations, { tag: translations })
       .use(insertedText)
       .use(markedText)
       .use(mathjax, createMathjaxInstance())
@@ -63,6 +66,7 @@ export default class Parser {
       .use(tableCaptions)
       .use(tasklist)
       .use(toc)
+
   }
 
   /**

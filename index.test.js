@@ -182,10 +182,18 @@ describe(`ling-md`, function() {
     expect(html).to.include(`class="table-of-contents`)
   })
 
-  describe.only(`translations`, function() {
+  describe(`translations`, function() {
 
-    it.only(`<q>`, function() {
+    it(`<span class=tln>'translation'</span>`, function() {
+      const md     = `The word <i>perro</i> means ''dog'' in Spanish.`
+      const parser = new Parser({ markdown: { typographer: false } })
+      const html   = parser.parse(md)
+      expect(html).to.equal(`<p>The word <i>perro</i> means <span class="tln">'dog'</span> in Spanish.</p>\n`)
+    })
+
+    it(`<q>`, function() {
       const md   = `The word <i>perro</i> means ''dog'' in Spanish.`
+      const parser = new Parser({ translations: `q` })
       const html = parser.parse(md)
       expect(html).to.equal(`<p>The word <i>perro</i> means <q>dog</q> in Spanish.</p>\n`)
     })

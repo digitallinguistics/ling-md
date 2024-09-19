@@ -1,60 +1,67 @@
 const tlnRegExp = /''(?<tln>.+?)''/gv
 
-function tokenize(state) {
+export default function translations(md, { tag }) {
 
-  const { Token } = state
+  const q = tag === `q` // Whether the tag is a `q` tag.
 
-  for (const token of state.tokens) {
+  function tokenize(state) {
 
-    if (token.type !== `inline`) continue
+    const { Token } = state
 
-    const inlineTokens = token.children
+    for (const token of state.tokens) {
 
-    for (const inlineToken of inlineTokens) {
+      if (token.type !== `inline`) continue
 
-      if (inlineToken.type !== `text`) continue
+      const inlineTokens = token.children
 
-      const { content } = inlineToken
-      const matches     = Array.from(content.matchAll(tlnRegExp))
+      for (const inlineToken of inlineTokens) {
 
-      if (!matches.length) continue
+        if (inlineToken.type !== `text`) continue
 
-      const newTokens = []
-      let   lastIndex = 0 // The index of the end of the previous match.
+        const { content } = inlineToken
+        const matches     = Array.from(content.matchAll(tlnRegExp))
 
-      for (const match of matches) {
+        if (!matches.length) continue
 
-        // If there is text between the end of the previous match and the start of this match, add it as a text token.
-        if (match.index > lastIndex) {
-          const textToken = new Token(`text`, ``, 0)
-          textToken.content = content.slice(lastIndex, match.index)
-          newTokens.push(textToken)
+        const newTokens = []
+        let lastIndex = 0 // The index of the end of the previous match.
+
+        for (const match of matches) {
+
+          // If there is text between the end of the previous match and the start of this match, add it as a text token.
+          if (match.index > lastIndex) {
+            const textToken = new Token(`text`, ``, 0)
+            textToken.content = content.slice(lastIndex, match.index)
+            newTokens.push(textToken)
+          }
+
+          // Add the opening tag.
+          const openingTag = new Token(`html_inline`, ``, 0)
+          openingTag.content = q ? `<q>` : `<span class="tln">`
+
+          // Add the content of the translation.
+          const contentToken = new Token(`text`, ``, 0)
+          const { tln } = match.groups
+          contentToken.content = q ? tln : `'${ tln }'`
+
+          // Add the closing tag.
+          const closingTag = new Token(`html_inline`, ``, 0)
+          closingTag.content = q ? `</q>` : `</span>`
+
+          newTokens.push(openingTag, contentToken, closingTag) // Add the new tokens.
+          lastIndex = match.index + match[0].length            // Update the index of the end of the previous match.
+
+          // If there is text after the last match, add it as a text token.
+          if (lastIndex < content.length) {
+            const textToken = new Token(`text`, ``, 0)
+            textToken.content = content.slice(lastIndex)
+            newTokens.push(textToken)
+          }
+
+          // Replace the original token with the new tokens.
+          inlineTokens.splice(inlineTokens.indexOf(inlineToken), 1, ...newTokens)
+
         }
-
-        // Add the opening tag.
-        const openingTag = new Token(`html_inline`, ``, 0)
-        openingTag.content = `<q>`
-
-        // Add the content of the translation.
-        const contentToken = new Token(`text`, ``, 0)
-        contentToken.content = match.groups.tln
-
-        // Add the closing tag.
-        const closingTag = new Token(`html_inline`, ``, 0)
-        closingTag.content = `</q>`
-
-        newTokens.push(openingTag, contentToken, closingTag) // Add the new tokens.
-        lastIndex = match.index + match[0].length            // Update the index of the end of the previous match.
-
-        // If there is text after the last match, add it as a text token.
-        if (lastIndex < content.length) {
-          const textToken = new Token(`text`, ``, 0)
-          textToken.content = content.slice(lastIndex)
-          newTokens.push(textToken)
-        }
-
-        // Replace the original token with the new tokens.
-        inlineTokens.splice(inlineTokens.indexOf(inlineToken), 1, ...newTokens)
 
       }
 
@@ -62,8 +69,6 @@ function tokenize(state) {
 
   }
 
-}
-
-export default function translations(md) {
   md.core.ruler.before(`replacements`, `tln`, tokenize)
+
 }

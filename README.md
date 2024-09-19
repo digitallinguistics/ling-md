@@ -77,9 +77,10 @@ Parse a markdown string using the current options and return HTML.
 
 ### Options
 
-| Option         | Type      | Default | Description                                                                                                                 |
-| -------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `translations` | `q\|span` | `q`     | Whether to use a `<q>` element or `<span class=tln>` for translations. `<span>`s will wrap the inner text in single quotes. |
+| Option         | Type      | Default                                                                | Description                                                                                                                 |
+| -------------- | --------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `markdown`     | Object    | <pre><code>{<br>  html: true,<br>  typographer: true<br>}</code></pre> | Options to pass to `markdown-it`. `typographer` and `html` are enabled by default.                                          |
+| `translations` | `span\|q` | `span`                                                                 | Whether to use a `<q>` element or `<span class=tln>` for translations. `<span>`s will wrap the inner text in single quotes. |
 
 ## Usage Notes
 
