@@ -45,6 +45,7 @@
     "markdown-it-collapsible": "^2.0.2",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
+    "markdown-it-for-inline": "^2.0.1",
     "markdown-it-ib": "^2.0.0",
     "markdown-it-ins": "^4.0.0",
     "markdown-it-mark": "^4.0.0",

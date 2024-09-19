@@ -13,6 +13,7 @@ import glosses              from './plugins/glosses.js'
 import headerAnchors        from 'markdown-it-anchor'
 import insertedText         from 'markdown-it-ins'
 import markedText           from 'markdown-it-mark'
+import ordinals             from './plugins/ordinals.js'
 import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
 import tableCaptions        from 'markdown-it-table-captions'
@@ -52,6 +53,7 @@ export default class Parser {
       .use(insertedText)
       .use(markedText)
       .use(mathjax, createMathjaxInstance())
+      .use(ordinals)
       .use(subscript)
       .use(superscript)
       .use(tableCaptions)

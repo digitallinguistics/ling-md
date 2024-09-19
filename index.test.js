@@ -140,6 +140,12 @@ describe(`ling-md`, function() {
     expect(html).to.contain(`svg`)
   })
 
+  it(`ordinals`, function() {
+    const md   = `1st, 2nd, 3rd, 4th`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup>, 4<sup>th</sup></p>\n`)
+  })
+
   it(`“smart quotes”`, function() {
     const md   = `"'Hello world!', he said."`
     const html = parser.parse(md)
