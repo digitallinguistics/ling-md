@@ -74,6 +74,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This includes <b>bold text</b>.</p>\n`)
   })
 
+  it(`_emphasis_`, function() {
+    const md   = `This is an _emphasized_ word.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>This is an <em>emphasized</em> word.</p>\n`)
+  })
+
   it(`*inline example **with bold***`, function() {
     const md   = `*inline example **with bold***`
     const html = parser.parse(md)
