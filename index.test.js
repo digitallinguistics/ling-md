@@ -98,6 +98,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This is a sentence with a footnote<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> and some more text.</p>\n<hr class="footnotes-sep">\n<section class="footnotes">\n<ol class="footnotes-list">\n<li id="fn1" class="footnote-item"><p>This is the footnote. <a href="#fnref1" class="footnote-backref">↩︎</a></p>\n</li>\n</ol>\n</section>\n`)
   })
 
+  it(`^^glosses^^`, function() {
+    const md   = `This is a sentence with a ^^gloss^^.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>This is a sentence with a <abbr class="gl">gloss</abbr>.</p>\n`)
+  })
+
   it(`HTML`, function() {
     const md   = `This contains an <i>inline example</i>.`
     const html = parser.parse(md)

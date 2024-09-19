@@ -9,6 +9,7 @@ import bracketedSpans       from 'markdown-it-bracketed-spans'
 import createMarkdownParser from 'markdown-it'
 import defLists             from 'markdown-it-deflist'
 import footnotes            from 'markdown-it-footnote'
+import glosses              from './plugins/glosses.js'
 import headerAnchors        from 'markdown-it-anchor'
 import insertedText         from 'markdown-it-ins'
 import markedText           from 'markdown-it-mark'
@@ -46,6 +47,7 @@ export default class Parser {
       .use(bracketedSpans)
       .use(defLists)
       .use(footnotes)
+      .use(glosses)
       .use(headerAnchors)
       .use(insertedText)
       .use(markedText)
