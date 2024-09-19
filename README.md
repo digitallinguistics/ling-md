@@ -32,9 +32,10 @@ The library enables the following features by default:
 
 ### Linguistics
 
-| Feature         | Markdown                       | HTML                                       |
-| --------------- | ------------------------------ | ------------------------------------------ |
-| inline examples | `The word *perro* is Spanish.` | `<p>The word <i>perro</i> is Spanish.</p>` |
+| Feature             | Markdown                       | HTML                                       |
+| ------------------- | ------------------------------ | ------------------------------------------ |
+| grammatical glosses | `^^fut^^`                      | `<abbr class="gl">fut</abbr>`              |
+| inline examples     | `The word *perro* is Spanish.` | `<p>The word <i>perro</i> is Spanish.</p>` |
 
 ### General
 
@@ -61,7 +62,7 @@ The library enables the following features by default:
 | superscript            | `^superscript^`                                                                                              | `<sup>superscript</sup>`                                                               |
 | table captions         | [See documentation here][table-captions]                                                                     |                                                                                        |
 | table of contents      | `[[toc]]`                                                                                                    | [See documentation here.][toc]                                                         |
-| typography             | `-- --- ... 1st 2nd 3rd 4th`                                                                                 | `– — … 1<sup>st</sup> 2<sup>nd</sup> 3<sup>rd</sup> 4<sup>th</sup>`                    |
+| typography             | `-- --- ... 1st 2nd 3rd 4th 1/3 3/4`                                                                         | `– — … 1<sup>st</sup> 2<sup>nd</sup> 3<sup>rd</sup> 4<sup>th</sup> ⅓ ¾`                |
 
 ## API
 

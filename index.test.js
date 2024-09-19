@@ -98,6 +98,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This is a sentence with a footnote<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> and some more text.</p>\n<hr class="footnotes-sep">\n<section class="footnotes">\n<ol class="footnotes-list">\n<li id="fn1" class="footnote-item"><p>This is the footnote. <a href="#fnref1" class="footnote-backref">↩︎</a></p>\n</li>\n</ol>\n</section>\n`)
   })
 
+  it(`fractions`, function() {
+    const md   = `1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/8, 1/9, 1/10, 2/3, 2/5, 3/4, 3/5, 3/8, 4/5, 5/6, 5/8, 7/8`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>½, ⅓, ¼, ⅕, ⅙, ⅐, ⅛, ⅑, ⅒, ⅔, ⅖, ¾, ⅗, ⅜, ⅘, ⅚, ⅝, ⅞</p>\n`)
+  })
+
   it(`^^glosses^^`, function() {
     const md   = `This is a sentence with a ^^gloss^^.`
     const html = parser.parse(md)
