@@ -2,7 +2,7 @@
 
 A JS library to convert [linguistics-flavored markdown][spec] to HTML.
 
-Uses the [marked] library for conversion, with a few custom extensions specific to the ling-md format (see [Notes](#notes) below for details). Also enables several commonly-used markdown extensions that are also relevant to linguistics.
+This library uses [markdown-it] for converting markdown, with a few custom extensions specific to the ling-md format (see [Notes](#usage-notes) below for details). It also enables several commonly-used markdown extensions that are also relevant to linguistics (such as footnotes).
 
 After conversion, you'll probably still want to apply additional CSS styles to the HTML. For example, grammatical glosses like `^^fut^^` are converted to abbreviation tags such as `<abbr>fut</abbr>`, but abbreviation tags are not styled in smallcaps by default.
 
@@ -57,7 +57,7 @@ Parse a markdown string using the current options and return HTML.
 
 ## Usage Notes
 
-- Most markdown libraries convert single asterisks (`*perro*`) to emphasis (`<em>perro</em>`), but `ling-md` converts them to [idiomatic text][i] (`<i>perro</i>`). Use `**double asterisks**` for bold instead.
+- Most markdown libraries convert single asterisks (`*perro*`) to emphasis (`<em>perro</em>`), but `ling-md` converts them to [idiomatic text][i] (`<i>perro</i>`). Use `**double asterisks**` for bold instead. (See ["you're using &lt;em&gt; wrong"][em-article] by Facundo Corradini for more information.)
 - Attributes may be added in a variety of formats. See the [`attributes-parser`][attrs-parser] library for a complete list. The most common ones are:
   - `.className` > `class="className"`
   - `#name` > `id="name"`
@@ -65,6 +65,7 @@ Parse a markdown string using the current options and return HTML.
 
 <!-- LINKS -->
 [attrs-parser]: https://www.npmjs.com/package/attributes-parser
+[em-article]:   https://blog.logrocket.com/youre-using-em-wrong/
 [i]:            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
-[marked]:       https://marked.js.org/
+[markdown-it]:  https://github.com/markdown-it/markdown-it#readme
 [spec]:         https://github.com/digitallinguistics/ling-markdown-spec

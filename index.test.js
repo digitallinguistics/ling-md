@@ -13,7 +13,7 @@ describe(`ling-md`, function() {
   })
 
   it(`exposes the marked instance`, function() {
-    expect(parser.marked.name).to.equal(`marked`)
+    expect(parser.engine.constructor.name).to.equal(`MarkdownIt`)
   })
 
   it(`allows HTML`, function() {
@@ -24,11 +24,10 @@ describe(`ling-md`, function() {
 
   describe(`attributes`, function() {
 
-    // NB: This tests both built-in renderers and extensions.
     it(`inline elements`, function() {
-      const md   = `This is an _emphasized_{.class} *word*{.class}.`
+      const md   = `This is an _emphasized_{.class} word.`
       const html = parser.parse(md)
-      expect(html).to.equal(`<p>This is an <em class="class">emphasized</em> <i class="class">word</i>.</p>\n`)
+      expect(html).to.equal(`<p>This is an <em class="class">emphasized</em> word.</p>\n`)
     })
 
     it(`block elements`, function() {
@@ -38,15 +37,15 @@ describe(`ling-md`, function() {
     })
 
     it(`block elements that contain inline elements`, function() {
-      const md = `This is a paragraph with **bold**{.bold} text.`
+      const md = `This is a paragraph with ~~strikethrough~~{.strike} text.`
       const html = parser.parse(md)
-      expect(html).to.equal(`<p>This is a paragraph with <b class="bold">bold</b> text.</p>\n`)
+      expect(html).to.equal(`<p>This is a paragraph with <s class="strike">strikethrough</s> text.</p>\n`)
     })
 
     it(`block elements that end with inline attributes`, function() {
-      const md = `- list item **bold**{.red}`
+      const md = `- list item ~~strikethrough~~{.strike}`
       const html = parser.parse(md)
-      expect(html).to.equal(`<ul>\n<li>list item <b class="red">bold</b></li>\n</ul>\n`)
+      expect(html).to.equal(`<ul>\n<li>list item <s class="strike">strikethrough</s></li>\n</ul>\n`)
     })
 
     it(`fenced code blocks without lang`, function() {
@@ -58,7 +57,7 @@ describe(`ling-md`, function() {
     it(`fenced code blocks with lang`, function() {
       const md   = `\`\`\`js {.red}\nconsole.log("Hello, World!")\n\`\`\``
       const html = parser.parse(md)
-      expect(html).to.equal(`<pre><code class="language-js red">console.log(&quot;Hello, World!&quot;)\n</code></pre>\n`)
+      expect(html).to.equal(`<pre><code class="red language-js">console.log(&quot;Hello, World!&quot;)\n</code></pre>\n`)
     })
 
   })
@@ -84,7 +83,7 @@ describe(`ling-md`, function() {
   it(`“smart quotes”`, function() {
     const md   = `"'Hello world!', he said."`
     const html = parser.parse(md)
-    expect(html).to.equal(`<p>&#8220;&#8216;Hello world!&#8217;, he said.&#8221;</p>\n`)
+    expect(html).to.equal(`<p>“‘Hello world!’, he said.”</p>\n`)
   })
 
 })

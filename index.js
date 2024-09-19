@@ -2,13 +2,14 @@
  * @module Parser
  */
 
-import attributes            from './extensions/attributes/index.js'
-import bold                  from './extensions/bold.js'
-import inlineExample         from './extensions/inlineExample.js'
-import { marked }            from 'marked'
-import { markedSmartypants } from 'marked-smartypants'
+import attributes           from 'markdown-it-attrs'
+import boldItalic           from 'markdown-it-ib'
+import createMarkdownParser from 'markdown-it'
 
-const extensions = [bold, inlineExample]
+const options = {
+  html:        true,
+  typographer: true,
+}
 
 /**
  * The Parser class.
@@ -18,15 +19,15 @@ export default class Parser {
   /**
    * The current marked instance.
    */
-  marked = marked
+  engine = createMarkdownParser(options)
 
   /**
    * Create a new linguistics markdown parser instance.
    */
   constructor() {
-    this.marked.use({ extensions })
-    this.marked.use(markedSmartypants())
-    attributes(this.marked)
+    this.engine
+      .use(attributes)
+      .use(boldItalic)
   }
 
   /**
@@ -35,7 +36,7 @@ export default class Parser {
    * @returns {String}    The parsed HTML.
    */
   parse(md) {
-    return this.marked.parse(md)
+    return this.engine.render(md)
   }
 
 }

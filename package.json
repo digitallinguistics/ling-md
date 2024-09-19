@@ -35,8 +35,8 @@
     "stop-only": "^3.4.0"
   },
   "dependencies": {
-    "attributes-parser": "^2.2.3",
-    "marked": "^14.1.2",
-    "marked-smartypants": "^1.1.8"
+    "markdown-it": "^14.1.0",
+    "markdown-it-attrs": "^4.2.0",
+    "markdown-it-ib": "^2.0.0"
   }
 }
