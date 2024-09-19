@@ -122,4 +122,10 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This is a sentence with a footnote<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> and some more text.</p>\n<hr class="footnotes-sep">\n<section class="footnotes">\n<ol class="footnotes-list">\n<li id="fn1" class="footnote-item"><p>This is the footnote. <a href="#fnref1" class="footnote-backref">↩︎</a></p>\n</li>\n</ol>\n</section>\n`)
   })
 
+  it(`^superscript^`, function() {
+    const md   = `This includes ^superscript^ text.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>This includes <sup>superscript</sup> text.</p>\n`)
+  })
+
 })

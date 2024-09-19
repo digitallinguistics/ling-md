@@ -35,11 +35,22 @@
     "stop-only": "^3.4.0"
   },
   "dependencies": {
+    "@mdit/plugin-alert": "^0.13.1",
+    "@mdit/plugin-mathjax": "^0.13.1",
+    "@mdit/plugin-tasklist": "^0.13.1",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.2.0",
     "markdown-it-bracketed-spans": "^1.0.1",
+    "markdown-it-collapsible": "^2.0.2",
+    "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
-    "markdown-it-ib": "^2.0.0"
+    "markdown-it-ib": "^2.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "markdown-it-table-captions": "^1.0.4",
+    "markdown-it-table-of-contents": "^0.8.0"
   }
 }

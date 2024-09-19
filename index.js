@@ -8,6 +8,7 @@ import bracketedSpans       from 'markdown-it-bracketed-spans'
 import createMarkdownParser from 'markdown-it'
 import footnotes            from 'markdown-it-footnote'
 import headerAnchors        from 'markdown-it-anchor'
+import superscript          from 'markdown-it-sup'
 
 const options = {
   html:        true,
@@ -34,6 +35,7 @@ export default class Parser {
       .use(bracketedSpans)
       .use(footnotes)
       .use(headerAnchors)
+      .use(superscript)
   }
 
   /**
