@@ -13,6 +13,7 @@ import insertedText         from 'markdown-it-ins'
 import markedText           from 'markdown-it-mark'
 import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
+import tableCaptions        from 'markdown-it-table-captions'
 import toc                  from 'markdown-it-table-of-contents'
 
 const options = {
@@ -45,6 +46,7 @@ export default class Parser {
       .use(markedText)
       .use(subscript)
       .use(superscript)
+      .use(tableCaptions)
       .use(toc)
   }
 

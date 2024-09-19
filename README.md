@@ -56,6 +56,7 @@ The library enables the following features by default:
 | subscript              | `~subscript~`                                                                                                | `<sub>subscript</sub>`                                                                 |
 | summary + details      | [See documentation here.][summary-details]                                                                   |                                                                                        |
 | superscript            | `^superscript^`                                                                                              | `<sup>superscript</sup>`                                                               |
+| table captions         | [See documentation here][table-captions]                                                                     |                                                                                        |
 | table of contents      | `[[toc]]`                                                                                                    | [See documentation here.][toc]                                                         |
 | typography             | `-- --- ...`                                                                                                 | `– — …`                                                                                |
 
@@ -87,5 +88,6 @@ Parse a markdown string using the current options and return HTML.
 [markdown-it]:     https://github.com/markdown-it/markdown-it#readme
 [spec]:            https://github.com/digitallinguistics/ling-markdown-spec
 [summary-details]: https://www.npmjs.com/package/markdown-it-collapsible
+[table-captions]:  https://github.com/martinring/markdown-it-table-captions
 [tables]:          https://www.markdownguide.org/extended-syntax/#tables
 [toc]:             https://www.npmjs.com/package/markdown-it-table-of-contents
