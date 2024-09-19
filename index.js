@@ -4,6 +4,7 @@
 
 import attributes           from 'markdown-it-attrs'
 import boldItalic           from 'markdown-it-ib'
+import bracketedSpans       from 'markdown-it-bracketed-spans'
 import createMarkdownParser from 'markdown-it'
 
 const options = {
@@ -28,6 +29,7 @@ export default class Parser {
     this.engine
       .use(attributes)
       .use(boldItalic)
+      .use(bracketedSpans)
   }
 
   /**

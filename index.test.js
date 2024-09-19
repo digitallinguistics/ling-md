@@ -110,4 +110,10 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This includes <strong>strong text</strong>.</p>\n`)
   })
 
+  it(`[bracketed spans]{.class}`, function() {
+    const md   = `[bracketed spans]{.class}`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p><span class="class">bracketed spans</span></p>\n`)
+  })
+
 })
