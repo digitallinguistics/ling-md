@@ -128,6 +128,12 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p>This includes <sup>superscript</sup> text.</p>\n`)
   })
 
+  it(`~subscript~`, function() {
+    const md   = `This includes ~subscript~ text.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>This includes <sub>subscript</sub> text.</p>\n`)
+  })
+
   it(`typography`, function() {
 
     const md = `2000--2010

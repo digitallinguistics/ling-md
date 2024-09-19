@@ -10,6 +10,7 @@ import footnotes            from 'markdown-it-footnote'
 import headerAnchors        from 'markdown-it-anchor'
 import insertedText         from 'markdown-it-ins'
 import markedText           from 'markdown-it-mark'
+import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
 
 const options = {
@@ -39,6 +40,7 @@ export default class Parser {
       .use(headerAnchors)
       .use(insertedText)
       .use(markedText)
+      .use(subscript)
       .use(superscript)
   }
 
