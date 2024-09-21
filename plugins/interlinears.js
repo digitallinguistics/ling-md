@@ -4,7 +4,15 @@ import scription2dlx from '@digitallinguistics/scription2dlx'
 
 const yamlHeaderRegExp = /^---\n(?<header>.*?)\n---\n/sv
 
-export default function InterlinearsPlugin(md) {
+const defaultOptions = {
+  dlx2html: {
+    glosses: true,
+    tag:     `li`,
+  },
+  scription2dlx: {},
+}
+
+export default function InterlinearsPlugin(md, pluginOptions = {}) {
 
   const originalRenderer = md.renderer.rules.fence
 
@@ -16,11 +24,13 @@ export default function InterlinearsPlugin(md) {
 
     if (lang === `igl`) {
 
-      const header    = token.content.match(yamlHeaderRegExp)?.groups?.header
-      const options   = header ? jsYaml.load(header) : {}
-      const scription = token.content.replace(yamlHeaderRegExp, ``)
-      const data      = scription2dlx(scription, options.scription2dlx)
-      const html      = dlx2html(data, options.dlx2html)
+      const header               = token.content.match(yamlHeaderRegExp)?.groups?.header
+      const yamlOptions          = header ? jsYaml.load(header) : {}
+      const scription            = token.content.replace(yamlHeaderRegExp, ``)
+      const scription2dlxOptions = Object.assign({}, defaultOptions.scription2dlx, pluginOptions.scription2dlx, yamlOptions.scription2dlx)
+      const data                 = scription2dlx(scription, scription2dlxOptions)
+      const dlx2htmlOptions      = Object.assign({}, defaultOptions.dlx2html, pluginOptions.dlx2html, yamlOptions.dlx2html)
+      const html                 = dlx2html(data, dlx2htmlOptions)
 
       return html
 

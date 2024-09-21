@@ -32,12 +32,12 @@ The library enables the following features by default:
 
 ### Linguistics
 
-| Feature             | Markdown                          | HTML                                             |
-| ------------------- | --------------------------------- | ------------------------------------------------ |
-| grammatical glosses | `^^fut^^`                         | `<abbr class="gl">fut</abbr>`                    |
-| inline examples     | `The word *perro* is Spanish.`    | `<p>The word <i>perro</i> is Spanish.</p>`       |
-| inline translations | `The word *perro* means ''dog''.` | `<p>The word <i>perro</i> means <q>dog</q>.</p>` |
-| interlinear glosses | <pre><code>\```igl<br>ninakupenda<br>ni-na-ku-pend-a<br>1sg.SUBJ-PRES-2sg.OBJ-love-IND<br>I love you<br>```</code></pre> | [See documentation here.][dlx2html] |
+| Feature             | Markdown                                                                                                                 | HTML                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+| grammatical glosses | `^^fut^^`                                                                                                                | `<abbr class="gl">fut</abbr>`                    |
+| inline examples     | `The word *perro* is Spanish.`                                                                                           | `<p>The word <i>perro</i> is Spanish.</p>`       |
+| inline translations | `The word *perro* means ''dog''.`                                                                                        | `<p>The word <i>perro</i> means <q>dog</q>.</p>` |
+| interlinear glosses | <pre><code>\```igl<br>ninakupenda<br>ni-na-ku-pend-a<br>1sg.SUBJ-PRES-2sg.OBJ-love-IND<br>I love you<br>```</code></pre> | [See documentation here.][dlx2html]              |
 
 ### General
 
@@ -117,10 +117,12 @@ Parse a markdown string using the current options and return HTML.
 
 ### Options
 
-| Option         | Type      | Default                                                                | Description                                                                                                                 |
-| -------------- | --------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `markdown`     | Object    | <pre><code>{<br>  html: true,<br>  typographer: true<br>}</code></pre> | Options to pass to `markdown-it`. `typographer` and `html` are enabled by default.                                          |
-| `translations` | `span\|q` | `span`                                                                 | Whether to use `<span class=tln>` or a `<q>` element for translations. `<span>`s will wrap the inner text in single quotes. |
+| Option          | Type      | Default                                                                | Description                                                                                                                                                                                    |
+| --------------- | --------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dlx2html`      | Object    | [See documentation here.][dlx2html]                                    | Options to pass to `dlx2html` (the library that converts interlinear examples to HTML). If options are provided in a YAML header within fenced code blocks, those options override these ones. |
+| `markdown`      | Object    | <pre><code>{<br>  html: true,<br>  typographer: true<br>}</code></pre> | Options to pass to `markdown-it`. `typographer` and `html` are enabled by default.                                                                                                             |
+| `translations`  | `span\|q` | `span`                                                                 | Whether to use `<span class=tln>` or a `<q>` element for translations. `<span>`s will wrap the inner text in single quotes.                                                                    |
+| `scription2dlx` | Object    | [See documentation here.][scription2html]                              | Options to pass to `scription2html` (the library that parses interlinear examples). If options are provided in a YAML header within fenced code blocks, those options override these ones.     |
 
 <!-- LINKS -->
 [alert]:           https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
@@ -133,6 +135,7 @@ Parse a markdown string using the current options and return HTML.
 [i]:               https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
 [markdown-it]:     https://github.com/markdown-it/markdown-it#readme
 [Scription]:       https://scription.digitallinguistics.io/
+[scription2html]:  https://github.com/digitallinguistics/scription2html
 [spec]:            https://github.com/digitallinguistics/ling-markdown-spec
 [summary-details]: https://www.npmjs.com/package/markdown-it-collapsible
 [table-captions]:  https://github.com/martinring/markdown-it-table-captions

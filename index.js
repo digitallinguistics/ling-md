@@ -39,8 +39,10 @@ export default class Parser {
    * Create a new linguistics markdown parser instance.
    */
   constructor({
-    markdown     = defaultMarkdownOptions,
-    translations = `span`,
+    dlx2html      = {},
+    markdown      = defaultMarkdownOptions,
+    scription2dlx = {},
+    translations  = `span`,
   } = {}) {
 
     const markdownOptions = Object.assign({}, defaultMarkdownOptions, markdown)
@@ -59,7 +61,7 @@ export default class Parser {
       .use(headerAnchors)
       .use(inlineTranslations, { tag: translations })
       .use(insertedText)
-      .use(interlinears)
+      .use(interlinears, { dlx2html, scription2dlx })
       .use(markedText)
       .use(mathjax, createMathjaxInstance())
       .use(ordinals)
