@@ -128,6 +128,30 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<p><i>inline example <b>with bold</b></i></p>\n`)
   })
 
+  it(`interlinear glosses`, function() {
+
+    const md = `
+\`\`\`igl
+---
+dlx2html:
+  glosses: true
+scription2dlx:
+  emphasis: false
+---
+nina*ku*penda
+ni-na-*ku*-pend-a
+1sg.SUBJ-PRES-*2sg.OBJ*-love-IND
+I love you
+\`\`\``
+
+    const html = parser.parse(md)
+
+    expect(html).to.match(/^<div class='igl'/v)
+    expect(html).not.to.contain(`*`)
+    expect(html).to.contain(`<abbr`)
+
+  })
+
   it(`++inserted text++`, function() {
     const md   = `This includes ++inserted text++.`
     const html = parser.parse(md)

@@ -14,6 +14,7 @@ import glosses              from './plugins/glosses.js'
 import headerAnchors        from 'markdown-it-anchor'
 import inlineTranslations   from './plugins/translations.js'
 import insertedText         from 'markdown-it-ins'
+import interlinears         from './plugins/interlinears.js'
 import markedText           from 'markdown-it-mark'
 import ordinals             from './plugins/ordinals.js'
 import subscript            from 'markdown-it-sub'
@@ -58,6 +59,7 @@ export default class Parser {
       .use(headerAnchors)
       .use(inlineTranslations, { tag: translations })
       .use(insertedText)
+      .use(interlinears)
       .use(markedText)
       .use(mathjax, createMathjaxInstance())
       .use(ordinals)

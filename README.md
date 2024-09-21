@@ -37,6 +37,7 @@ The library enables the following features by default:
 | grammatical glosses | `^^fut^^`                         | `<abbr class="gl">fut</abbr>`                    |
 | inline examples     | `The word *perro* is Spanish.`    | `<p>The word <i>perro</i> is Spanish.</p>`       |
 | inline translations | `The word *perro* means ''dog''.` | `<p>The word <i>perro</i> means <q>dog</q>.</p>` |
+| interlinear glosses | <pre><code>\```igl<br>ninakupenda<br>ni-na-ku-pend-a<br>1sg.SUBJ-PRES-2sg.OBJ-love-IND<br>I love you<br>```</code></pre> | [See documentation here.][dlx2html] |
 
 ### General
 
@@ -65,6 +66,45 @@ The library enables the following features by default:
 | table of contents      | `[[toc]]`                                                                                                    | [See documentation here.][toc]                                                         |
 | typography             | `-- --- ... 1st 2nd 3rd 4th 1/3 3/4`                                                                         | `– — … 1<sup>st</sup> 2<sup>nd</sup> 3<sup>rd</sup> 4<sup>th</sup> ⅓ ¾`                |
 
+## Usage Notes
+
+- Most markdown libraries convert single asterisks (`*perro*`) to emphasis (`<em>perro</em>`), but `ling-md` converts them to [idiomatic text][i] (`<i>perro</i>`). Use `**double asterisks**` for bold instead. (See ["you're using &lt;em&gt; wrong"][em-article] by Facundo Corradini for more information.)
+- Attributes may be added in a variety of formats. See the [`attributes-parser`][attrs-parser] library for a complete list. The most common ones are:
+  - `.className` > `class="className"`
+  - `#name` > `id="name"`
+  - `attr=val` > `attr="val"` (`data-*` attributes also work)
+- There is no markdown shortcut for underlining. Use the `<u>` tag instead.
+- You can enter interlinear glossed examples in [Scription] format, using fenced code blocks, like so:
+
+  ````
+  ```igl
+  ninakupenda
+  ni-na-ku-pend-a
+  1sg.SUBJ-PRES-2sg.OBJ-love-IND
+  I love you
+  ```
+  ````
+
+  Note that you can enter multiple examples in a single code block, separated by a blank line.
+
+  You can also pass options to both the `scription2dlx` and `dlx2html` libraries by including those options in the YAML header of the interlinear, like so:
+
+  ````
+  ```igl
+  ---
+  dlx2html:
+    glosses: true
+  scription2dlx:
+    emphasis: false
+  ---
+
+  ninakupenda
+  ni-na-ku-pend-a
+  1sg.SUBJ-PRES-2sg.OBJ-love-IND
+  I love you
+  ```
+  ````
+
 ## API
 
 ### `marked`
@@ -82,24 +122,17 @@ Parse a markdown string using the current options and return HTML.
 | `markdown`     | Object    | <pre><code>{<br>  html: true,<br>  typographer: true<br>}</code></pre> | Options to pass to `markdown-it`. `typographer` and `html` are enabled by default.                                          |
 | `translations` | `span\|q` | `span`                                                                 | Whether to use `<span class=tln>` or a `<q>` element for translations. `<span>`s will wrap the inner text in single quotes. |
 
-## Usage Notes
-
-- Most markdown libraries convert single asterisks (`*perro*`) to emphasis (`<em>perro</em>`), but `ling-md` converts them to [idiomatic text][i] (`<i>perro</i>`). Use `**double asterisks**` for bold instead. (See ["you're using &lt;em&gt; wrong"][em-article] by Facundo Corradini for more information.)
-- Attributes may be added in a variety of formats. See the [`attributes-parser`][attrs-parser] library for a complete list. The most common ones are:
-  - `.className` > `class="className"`
-  - `#name` > `id="name"`
-  - `attr=val` > `attr="val"` (`data-*` attributes also work)
-- There is no markdown shortcut for underlining. Use the `<u>` tag instead.
-
 <!-- LINKS -->
 [alert]:           https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
 [attrs-parser]:    https://www.npmjs.com/package/attributes-parser
 [checklists]:      https://www.markdownguide.org/extended-syntax/#task-lists
 [def-lists]:       https://pandoc.org/MANUAL.html#definition-lists
+[dlx2html]:        https://github.com/digitallinguistics/dlx2html
 [em-article]:      https://blog.logrocket.com/youre-using-em-wrong/
 [fn]:              https://www.npmjs.com/package/markdown-it-footnote
 [i]:               https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
 [markdown-it]:     https://github.com/markdown-it/markdown-it#readme
+[Scription]:       https://scription.digitallinguistics.io/
 [spec]:            https://github.com/digitallinguistics/ling-markdown-spec
 [summary-details]: https://www.npmjs.com/package/markdown-it-collapsible
 [table-captions]:  https://github.com/martinring/markdown-it-table-captions
