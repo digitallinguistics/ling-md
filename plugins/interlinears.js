@@ -6,6 +6,7 @@ const yamlHeaderRegExp = /^---\n(?<header>.*?)\n---\n/sv
 
 const defaultOptions = {
   dlx2html: {
+    classes: [`ex`, `igl`],
     glosses: true,
     tag:     `li`,
   },
