@@ -18,6 +18,7 @@ import interlinears         from './plugins/interlinears.js'
 import markedText           from 'markdown-it-mark'
 import ordinals             from './plugins/ordinals.js'
 import orthographic         from './plugins/orthographic.js'
+import phonemic             from './plugins/phonemic.js'
 import phonetic             from './plugins/phonetic.js'
 import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
@@ -68,6 +69,7 @@ export default class Parser {
       .use(mathjax, createMathjaxInstance())
       .use(ordinals)
       .use(orthographic)
+      .use(phonemic)
       .use(phonetic)
       .use(subscript)
       .use(superscript)

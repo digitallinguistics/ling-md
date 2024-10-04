@@ -182,6 +182,12 @@ I love you
     expect(html).to.equal(`<p>British English spells many words with a <span class="ortho">⟨u⟩</span>.</p>\n`)
   })
 
+  it(`phonemic transcriptions`, function() {
+    const md   = `The word //ˈhɛ.loʊ// is a greeting.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>The word <span class="phon">/ˈhɛ.loʊ/</span> is a greeting.</p>\n`)
+  })
+
   it(`phonetic transcriptions`, function() {
     const md   = `The word [[ˈhɛ.loʊ]] is a greeting.`
     const html = parser.parse(md)
