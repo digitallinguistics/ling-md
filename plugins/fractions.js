@@ -1,9 +1,10 @@
 const fractionRegExp = /\b\d\/\d0?\b/gv
 
-export default function factions(md) {
+export default function fractions(md) {
 
   function replaceFractions(state) {
-    const fractions = {
+
+    const replacements = {
       '0/3':  `↉`,
       '1/2':  `½`,
       '1/3':  `⅓`,
@@ -29,11 +30,12 @@ export default function factions(md) {
       if (token.type === `inline` && token.children) {
         token.children.forEach(child => {
           if (child.type === `text`) {
-            child.content = child.content.replaceAll(fractionRegExp, match => fractions[match] || match)
+            child.content = child.content.replaceAll(fractionRegExp, match => replacements[match] || match)
           }
         })
       }
     })
+
   }
 
   md.core.ruler.after(`inline`, `fractions`, replaceFractions)

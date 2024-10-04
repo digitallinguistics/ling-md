@@ -17,6 +17,7 @@ import insertedText         from 'markdown-it-ins'
 import interlinears         from './plugins/interlinears.js'
 import markedText           from 'markdown-it-mark'
 import ordinals             from './plugins/ordinals.js'
+import orthographic         from './plugins/orthographic.js'
 import subscript            from 'markdown-it-sub'
 import superscript          from 'markdown-it-sup'
 import tableCaptions        from 'markdown-it-table-captions'
@@ -65,6 +66,7 @@ export default class Parser {
       .use(markedText)
       .use(mathjax, createMathjaxInstance())
       .use(ordinals)
+      .use(orthographic)
       .use(subscript)
       .use(superscript)
       .use(tableCaptions)

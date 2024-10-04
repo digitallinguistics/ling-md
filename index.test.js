@@ -146,7 +146,7 @@ I love you
 
     const html = parser.parse(md)
 
-    expect(html).to.match(/^<div class='igl'/v)
+    expect(html).to.match(/^<li class='ex igl'/v)
     expect(html).not.to.contain(`*`)
     expect(html).to.contain(`<abbr`)
 
@@ -174,6 +174,12 @@ I love you
     const md   = `1st, 2nd, 3rd, 4th`
     const html = parser.parse(md)
     expect(html).to.equal(`<p>1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup>, 4<sup>th</sup></p>\n`)
+  })
+
+  it(`orthographic transcriptions`, function() {
+    const md   = `British English spells many words with a <<u>>.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>British English spells many words with a <span class="ortho">⟨u⟩</span>.</p>\n`)
   })
 
   it(`“smart quotes”`, function() {
