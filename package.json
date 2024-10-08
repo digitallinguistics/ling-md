@@ -55,6 +55,6 @@
     "markdown-it-for-inline": "^2.0.1",
     "markdown-it-ib": "^2.0.0",
     "markdown-it-table-captions": "^1.0.4",
-    "markdown-it-table-of-contents": "^0.8.0"
+    "markdown-it-toc-done-right": "^4.2.0"
   }
 }

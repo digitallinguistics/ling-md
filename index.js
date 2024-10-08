@@ -24,7 +24,7 @@ import { sub as subscript }      from '@mdit/plugin-sub'
 import { sup as superscript }    from '@mdit/plugin-sup'
 import tableCaptions             from 'markdown-it-table-captions'
 import { tasklist }              from '@mdit/plugin-tasklist'
-import toc                       from 'markdown-it-table-of-contents'
+import toc                       from 'markdown-it-toc-done-right'
 
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax'
 
@@ -76,7 +76,7 @@ export default class Parser {
       .use(superscript)
       .use(tableCaptions)
       .use(tasklist, plugins[`@mdit/plugin-tasklist`])
-      .use(toc, plugins[`markdown-it-table-of-contents`])
+      .use(toc, plugins[`markdown-it-toc-done-right`])
 
   }
 
