@@ -44,6 +44,7 @@ export default class Parser {
   constructor({
     dlx2html      = {},
     markdown      = defaultMarkdownOptions,
+    plugins       = {},
     scription2dlx = {},
     translations  = `span`,
   } = {}) {
@@ -53,20 +54,20 @@ export default class Parser {
     this.engine = createMarkdownParser(markdownOptions)
 
     this.engine
-      .use(alert)
-      .use(attributes) // Must come before headerAnchors
+      .use(alert, plugins[`@mdit/plugin-alert`])
+      .use(attributes, plugins[`markdown-it-attrs`]) // Must come before headerAnchors
       .use(boldItalic)
       .use(bracketedSpans)
       .use(defLists)
       .use(footnotes)
       .use(fractions)
       .use(glosses)
-      .use(headerAnchors)
+      .use(headerAnchors, plugins[`markdown-it-anchor`])
       .use(inlineTranslations, { tag: translations })
       .use(insertedText)
       .use(interlinears, { dlx2html, scription2dlx })
       .use(markedText)
-      .use(mathjax, createMathjaxInstance())
+      .use(mathjax, createMathjaxInstance(plugins[`@mdit/plugin-mathjax`]))
       .use(ordinals)
       .use(orthographic)
       .use(phonemic)
@@ -74,8 +75,8 @@ export default class Parser {
       .use(subscript)
       .use(superscript)
       .use(tableCaptions)
-      .use(tasklist)
-      .use(toc)
+      .use(tasklist, plugins[`@mdit/plugin-tasklist`])
+      .use(toc, plugins[`markdown-it-table-of-contents`])
 
   }
 

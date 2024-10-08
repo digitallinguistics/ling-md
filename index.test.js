@@ -254,4 +254,12 @@ I love you
 
   })
 
+  it(`option: plugins`, function() {
+    const options = { plugins: { 'markdown-it-anchor': { permalink: false } } }
+    const md      = `# Header`
+    const parser  = new Parser(options)
+    const html    = parser.parse(md)
+    expect(html).to.equal(`<h1 id="header" tabindex="-1">Header</h1>\n`)
+  })
+
 })
