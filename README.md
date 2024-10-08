@@ -132,7 +132,7 @@ Parse a markdown string using the current options and return HTML.
 [def-lists]:       https://pandoc.org/MANUAL.html#definition-lists
 [dlx2html]:        https://github.com/digitallinguistics/dlx2html
 [em-article]:      https://blog.logrocket.com/youre-using-em-wrong/
-[fn]:              https://www.npmjs.com/package/markdown-it-footnote
+[fn]:              https://mdit-plugins.github.io/footnote.html
 [i]:               https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
 [markdown-it]:     https://github.com/markdown-it/markdown-it#readme
 [Scription]:       https://scription.digitallinguistics.io/

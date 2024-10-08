@@ -2,29 +2,29 @@
  * @module Parser
  */
 
-import { alert }            from '@mdit/plugin-alert'
-import attributes           from 'markdown-it-attrs'
-import boldItalic           from 'markdown-it-ib'
-import bracketedSpans       from 'markdown-it-bracketed-spans'
-import createMarkdownParser from 'markdown-it'
-import defLists             from 'markdown-it-deflist'
-import footnotes            from 'markdown-it-footnote'
-import fractions            from './plugins/fractions.js'
-import glosses              from './plugins/glosses.js'
-import headerAnchors        from 'markdown-it-anchor'
-import inlineTranslations   from './plugins/translations.js'
-import insertedText         from 'markdown-it-ins'
-import interlinears         from './plugins/interlinears.js'
-import markedText           from 'markdown-it-mark'
-import ordinals             from './plugins/ordinals.js'
-import orthographic         from './plugins/orthographic.js'
-import phonemic             from './plugins/phonemic.js'
-import phonetic             from './plugins/phonetic.js'
-import subscript            from 'markdown-it-sub'
-import superscript          from 'markdown-it-sup'
-import tableCaptions        from 'markdown-it-table-captions'
-import { tasklist }         from '@mdit/plugin-tasklist'
-import toc                  from 'markdown-it-table-of-contents'
+import { alert }                 from '@mdit/plugin-alert'
+import { attrs as attributes }   from '@mdit/plugin-attrs'
+import boldItalic                from 'markdown-it-ib'
+import bracketedSpans            from 'markdown-it-bracketed-spans'
+import createMarkdownParser      from 'markdown-it'
+import { dl as defLists }        from '@mdit/plugin-dl'
+import { footnote as footnotes } from '@mdit/plugin-footnote'
+import fractions                 from './plugins/fractions.js'
+import glosses                   from './plugins/glosses.js'
+import headerAnchors             from 'markdown-it-anchor'
+import inlineTranslations        from './plugins/translations.js'
+import { ins as insertedText }   from '@mdit/plugin-ins'
+import interlinears              from './plugins/interlinears.js'
+import { mark as markedText }    from '@mdit/plugin-mark'
+import ordinals                  from './plugins/ordinals.js'
+import orthographic              from './plugins/orthographic.js'
+import phonemic                  from './plugins/phonemic.js'
+import phonetic                  from './plugins/phonetic.js'
+import { sub as subscript }      from '@mdit/plugin-sub'
+import { sup as superscript }    from '@mdit/plugin-sup'
+import tableCaptions             from 'markdown-it-table-captions'
+import { tasklist }              from '@mdit/plugin-tasklist'
+import toc                       from 'markdown-it-table-of-contents'
 
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax'
 
@@ -55,7 +55,7 @@ export default class Parser {
 
     this.engine
       .use(alert, plugins[`@mdit/plugin-alert`])
-      .use(attributes, plugins[`markdown-it-attrs`]) // Must come before headerAnchors
+      .use(attributes, plugins[`@mdit/plugin-attrs`]) // Must come before headerAnchors
       .use(boldItalic)
       .use(bracketedSpans)
       .use(defLists)
