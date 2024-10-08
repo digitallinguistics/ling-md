@@ -86,6 +86,13 @@ describe(`ling-md`, function() {
     expect(html).to.equal(`<dl>\n<dt>term 1</dt>\n<dd>definition 1</dd>\n<dt>term 2</dt>\n<dd>definition 2</dd>\n</dl>\n`)
   })
 
+  it(`~~deleted text~~`, function() {
+    // NB: Markdown supports this by default, but for some reason there are plugins for it, which is confusing.
+    const md   = `This includes ~~deleted text~~.`
+    const html = parser.parse(md)
+    expect(html).to.equal(`<p>This includes <s>deleted text</s>.</p>\n`)
+  })
+
   it(`_emphasis_`, function() {
     const md   = `This is an _emphasized_ word.`
     const html = parser.parse(md)
