@@ -225,10 +225,9 @@ I love you
     expect(html).to.equal(`<p>This includes <sub>subscript</sub> text.</p>\n`)
   })
 
-  it.only(`TOC`, function() {
+  it(`TOC`, function() {
     const md   = `[[toc]]\n\n# Header\n\n## Subheader`
     const html = parser.parse(md)
-    console.log(html)
     expect(html).to.include(`class="table-of-contents`)
   })
 
