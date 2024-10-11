@@ -1,6 +1,6 @@
 {
   "name": "@digitallinguistics/ling-md",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A JS library to convert linguistics-flavored markdown to HTML.",
   "keywords": [
     "linguistics",
